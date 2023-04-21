@@ -27,6 +27,12 @@ app.post('/create',async (req, res) => {
     if(!todo)return res.status(500).json({success:false})
     return res.status(200).json({todo});
   });
+
+  app.get('/getall',async (req, res) => {
+    const todo =await Todo.find();
+    if(!todo)return res.status(500).json({success:false})
+    return res.status(200).json({todo});
+  });
   
   app.put('/update/:id', async(req, res) => {
     const todo =await Todo.findById(req.params.id);
